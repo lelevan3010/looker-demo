@@ -26,6 +26,7 @@ const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 const dotenv = require('dotenv')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -83,6 +84,9 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html' // the template for our HTML file
+    }),
     new BundleAnalyzerPlugin({
       analyzerMode: process.env.ANALYZE_MODE || 'disabled',
     }),
